@@ -1,0 +1,31 @@
+﻿@model IReadOnlyList<web_sitem.Models.PortfolioItem>
+
+@{
+    ViewData["Title"] = "Portföy";
+}
+
+<section class="page-hero container">
+    <span class="eyebrow">Portföy</span>
+    <h1>Gerçekleştirdiğimiz projelerle etkisini kanıtlamış çözümler.</h1>
+    <p>Farklı sektörlere özel geliştirdiğimiz projeler, kullanıcı deneyimi ve iş başarısı odaklı tasarlandı.</p>
+</section>
+
+<section class="container section">
+    <div class="section-grid">
+        @foreach (var item in Model)
+        {
+            <div class="card h-100">
+                @if (!string.IsNullOrWhiteSpace(item.ImageUrl))
+                {
+                    <img class="card-img-top" src="@item.ImageUrl" alt="@item.Title" loading="lazy" />
+                }
+                <div class="card-body">
+                    <span class="badge">@item.Category</span>
+                    <h3 class="card-title mt-3">@item.Title</h3>
+                    <p class="card-text">@item.Description</p>
+                    <a class="btn btn-secondary mt-3" href="#">@item.ActionText</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

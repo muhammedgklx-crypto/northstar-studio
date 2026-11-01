@@ -1,0 +1,50 @@
+@model web_sitem.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Yeni Blog Yazısı Ekle";
+}
+
+<div class="container py-5">
+    <h1 class="display-5">Yeni Blog Yazısı Ekle</h1>
+    <form asp-action="CreateBlogPost" method="post">
+        <div class="mb-3">
+            <label class="form-label">Başlık</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Slug</label>
+            <input asp-for="Slug" class="form-control" />
+            <span asp-validation-for="Slug" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Kategori</label>
+            <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Özet</label>
+            <input asp-for="Summary" class="form-control" />
+            <span asp-validation-for="Summary" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ara metin</label>
+            <textarea asp-for="Excerpt" class="form-control"></textarea>
+            <span asp-validation-for="Excerpt" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">İçerik</label>
+            <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Görsel URL</label>
+            <input asp-for="ImageUrl" class="form-control" placeholder="/images/placeholder-blog.svg" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Yayınlanma Tarihi</label>
+            <input asp-for="PublishedAt" type="datetime-local" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>

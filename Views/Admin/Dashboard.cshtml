@@ -1,0 +1,51 @@
+@model web_sitem.Controllers.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Yönetim Paneli";
+}
+
+<div class="container py-5">
+    <h1 class="display-5">Yönetim Paneli</h1>
+    <p class="lead">Bu panelden içerik ekleyebilir, silebilir ve site veritabanını yönetebilirsiniz.</p>
+
+    <div class="row gy-4 mt-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4 text-center">
+                <h2>@Model.ServiceCount</h2>
+                <p>Hizmet</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4 text-center">
+                <h2>@Model.PortfolioCount</h2>
+                <p>Portföy öğesi</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4 text-center">
+                <h2>@Model.BlogCount</h2>
+                <p>Blog yazısı</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4 text-center">
+                <h2>@Model.MessageCount</h2>
+                <p>Gelen mesaj</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <a class="btn btn-primary w-100" asp-action="Services">Hizmetleri Yönet</a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-primary w-100" asp-action="Portfolio">Portföyü Yönet</a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-primary w-100" asp-action="Blog">Blogu Yönet</a>
+            </div>
+        </div>
+    </div>
+</div>

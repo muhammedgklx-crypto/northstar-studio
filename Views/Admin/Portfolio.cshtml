@@ -1,0 +1,31 @@
+@model IReadOnlyList<web_sitem.Models.PortfolioItem>
+
+@{
+    ViewData["Title"] = "Portföy Yönetimi";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5">Portföy Yönetimi</h1>
+            <p class="text-muted">Buradan yeni proje örnekleri ekleyebilir veya mevcutları silebilirsiniz.</p>
+        </div>
+        <a class="btn btn-success" asp-action="CreatePortfolioItem">Yeni Portföy Öğesi Ekle</a>
+    </div>
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>@item.Title</h5>
+                    <p class="mb-1">@item.Category — @item.Description</p>
+                </div>
+                <form asp-action="DeletePortfolioItem" method="post" class="m-0">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>

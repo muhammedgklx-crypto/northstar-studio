@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Ödeme Başarılı";
+}
+
+<div class="container py-5">
+    <div class="content-card">
+        <h1>Teşekkürler — Ödeme Alındı</h1>
+        <p class="lead">Ödemeniz başarılı olarak işlendi.</p>
+        <p>Oturum ID: <strong>@ViewData["SessionId"]</strong></p>
+        <a class="btn btn-primary mt-3" asp-controller="Home" asp-action="Index">Anasayfaya Dön</a>
+    </div>
+</div>

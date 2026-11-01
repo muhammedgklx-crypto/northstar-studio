@@ -1,0 +1,84 @@
+﻿@model web_sitem.Models.BlogIndexViewModel
+
+@{
+    ViewData["Title"] = "Belgeler";
+}
+
+<section class="page-hero container">
+    <span class="eyebrow">Metin Belgeleri</span>
+    <h1>Yazılmış içeriklerinizi düzenleyin, paylaşın ve kaç kişinin görüntülediğini takip edin.</h1>
+    <p>Kurumsal blog yazıları, rehberler ve strateji içerikleri burada tek bir yerde yayınlanır.</p>
+</section>
+
+<section class="container section">
+    <form asp-action="Blog" method="get" class="search-panel">
+        <div class="search-input-group">
+            <input name="q" class="form-control" value="@Model.SearchQuery" placeholder="Makale ara..." />
+            <button class="btn btn-primary" type="submit">Ara</button>
+        </div>
+        <div class="chip-row">
+            <a class="chip @(string.IsNullOrWhiteSpace(Model.SelectedCategory) ? "active" : string.Empty)" asp-action="Blog">Tümü</a>
+            @foreach (var category in Model.Categories)
+            {
+                <a class="chip @(Model.SelectedCategory == category ? "active" : string.Empty)" asp-action="Blog" asp-route-category="@category">@category</a>
+            }
+        </div>
+    </form>
+
+    @if (Model.Posts.Any())
+    {
+        <div class="section-grid mt-4">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="card h-100">
+                    <div class="card-image">
+                        @if (!string.IsNullOrWhiteSpace(post.ImageUrl))
+                        {
+                            <img src="@post.ImageUrl" alt="@post.Title" loading="lazy" />
+                        }
+                        else
+                        {
+                            <div class="image-fallback">✍️</div>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <span class="badge">@post.Category</span>
+                        <h3 class="card-title mt-3">@post.Title</h3>
+                        <p class="card-text">@post.Summary</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="text-muted small">@post.ViewCount görüntülenme</span>
+                            <a class="btn btn-primary" asp-action="BlogPost" asp-route-slug="@post.Slug">Devamını Oku</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="content-card empty-state mt-4">
+            <h3>Bu filtreye uygun belge bulunamadı.</h3>
+            <p>Arama terimini değiştirdikten sonra tekrar deneyebilirsiniz.</p>
+        </div>
+    }
+
+    <div class="popular-section mt-5">
+        <div class="section-title">
+            <h2>En çok görüntülenenler</h2>
+            <p>Okuyucu kitlenin en çok ilgisini çeken içerikler.</p>
+        </div>
+        <div class="section-grid">
+            @foreach (var post in Model.PopularPosts)
+            {
+                <div class="card h-100">
+                    <div class="card-body">
+                        <span class="badge">@post.Category</span>
+                        <h3 class="card-title mt-3">@post.Title</h3>
+                        <p class="card-text">@post.Summary</p>
+                        <a class="btn btn-secondary mt-3" asp-action="BlogPost" asp-route-slug="@post.Slug">Oku</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

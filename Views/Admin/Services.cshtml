@@ -1,0 +1,31 @@
+@model IReadOnlyList<web_sitem.Models.Service>
+
+@{
+    ViewData["Title"] = "Hizmet Yönetimi";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5">Hizmet Yönetimi</h1>
+            <p class="text-muted">Veritabanındaki hizmetleri burada düzenleyebilir, silebilir veya yenilerini ekleyebilirsiniz.</p>
+        </div>
+        <a class="btn btn-success" asp-action="CreateService">Yeni Hizmet Ekle</a>
+    </div>
+
+    <div class="list-group">
+        @foreach (var service in Model)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>@service.Title</h5>
+                    <p class="mb-1">@service.Description</p>
+                </div>
+                <form asp-action="DeleteService" method="post" class="m-0">
+                    <input type="hidden" name="id" value="@service.Id" />
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>

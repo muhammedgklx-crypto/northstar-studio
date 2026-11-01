@@ -1,0 +1,314 @@
+## 1. Projenin temel yapısı
+
+### `Program.cs`
+Bu dosya uygulamanın başlangıç noktası:
+
+- `builder.Services.AddControllersWithViews();`
+  - MVC Controller + View desteği ekliyor.
+- `builder.Services.AddDbContext<AppDbContext>(...)`
+  - SQLite veritabanı (`websitem.db`) kullanılıyor.
+- `builder.Services.AddAuthentication(...).AddCookie(...)`
+  - Cookie tabanlı giriş sistemi aktif.
+- `builder.Services.AddAuthorization();`
+  - Yetkilendirme desteği ekliyor.
+- `db.Database.Migrate();`
+  - Uygulama açıldığında veritabanı şemasını model ile eşitliyor.
+- `SiteData.EnsureSeedData(db);`
+  - Eğer veri yoksa önceden tanımlanmış içerikleri DB’ye ekliyor.
+
+Bu sayede uygulama açıldığında veritabanı otomatik oluşturuluyor / güncelleniyor ve gerekli başlangıç kayıtları ekleniyor.
+
+---
+
+## 2. Veritabanı ve tablolar
+
+`AppDbContext.cs` şu `DbSet`leri içeriyor; her biri bir SQLite tablosu olur:
+
+- `Services` → Hizmetler
+- `PortfolioItems` → Portföy öğeleri
+- `BlogPosts` → Blog yazıları
+- `BlogComments` → Blog yorumları
+- `ContactMessages` → İletişim formlarından gelen mesajlar
+- `UserAccounts` → Kullanıcı hesapları
+- `Products` → Ürünler (Stripe ödeme için)
+- `Orders` → Siparişler / ödeme oturum kayıtları
+
+Ayrıca EF Core migration sistemi için:
+- `Migrations/20260716120415_InitialCreate.cs`
+- `Migrations/AppDbContextModelSnapshot.cs`
+
+Bu dosyalarda hangi tabloların ve sütunların oluşturulacağı yazıyor.
+
+### `SiteData`
+`Models/SiteData.cs` içinde sabit olarak tanımlanmış:
+- Varsayılan servisler
+- Varsayılan portföy öğeleri
+- Varsayılan blog yazıları
+- Varsayılan admin kullanıcı
+
+Bu kod, uygulama ilk açıldığında DB içinde veri yoksa bu örnek içerikleri ekliyor.
+
+Örneğin:
+- `admin@ornek.com / Admin#1234`
+- `Service` ve `PortfolioItem` verileri
+- `BlogPost` içerikleri
+- `Product` örnekleri
+
+---
+
+## 3. Model sınıfları
+
+`Models/` klasöründe bulunan temel sınıflar:
+
+- `Service`:
+  - `Title`, `Description`, `Icon`, `ActionText`, `ImageUrl`
+- `PortfolioItem`:
+  - `Title`, `Category`, `Description`, `ActionText`, `ImageUrl`
+- `BlogPost`:
+  - `Slug`, `Title`, `Summary`, `Excerpt`, `Content`, `Category`, `PublishedAt`, `ViewCount`, `ImageUrl`
+- `BlogComment`:
+  - `BlogPostId`, `Name`, `Email`, `Message`, `CreatedAt`
+- `ContactFormModel`:
+  - `Name`, `Email`, `Subject`, `Message` (form doğrulama için)
+- `ContactMessage`:
+  - `Name`, `Email`, `Subject`, `Message`, `ReceivedAt`
+- `UserAccount`:
+  - `Email`, `DisplayName`, `Password`, `Role`
+- `Product`:
+  - `Title`, `Description`, `PriceCents`, `Currency`, `ImageUrl`
+- `Order`:
+  - `SessionId`, `Amount`, `Currency`, `CustomerEmail`, `Status`, `CreatedAt`
+
+---
+
+## 4. Controller’lar ve görevleri
+
+### `HomeController`
+Web sitesinin ana içeriğini yönetiyor:
+
+- `Index()` → Ana sayfa
+- `About()` → Hakkımızda
+- `Services()` → Hizmetler sayfası
+- `Portfolio()` → Portföy sayfası
+- `Blog(string category, string q)` → Blog listeleme
+- `BlogPost(string slug)` → Tek blog yazısı
+- `SubmitComment(string slug, BlogComment newComment)` → Blog yorum gönderme
+- `Contact()` → İletişim formu
+- `Contact(ContactFormModel model)` → İletişim formu gönderimi
+- `ThankYou()` → Gönderim sonrası teşekkür sayfası
+- `Inbox()` → Admin kullanıcı için gelen mesajlar listesi
+
+### `AccountController`
+Kullanıcı girişi ve kayıt:
+
+- `Login` (GET/POST)
+- `Register` (GET/POST)
+- `Logout`
+
+Giriş yaptığında cookie oluşturuyor ve kullanıcıyı siteye kimlikli olarak sokuyor.
+
+### `PaymentsController`
+Stripe ödeme mantığını içeriyor:
+
+- `Product()` → Ürün listeleme / ödeme sayfası
+- `CreateCheckout(int productId)` → Stripe Checkout oturumu oluşturma
+- `CheckoutSuccess(string session_id)` → Başarılı ödeme sonrası sayfa
+- `Webhook()` → Stripe webhook işlemleri
+
+Bu modül, ödeme oturumu oluşturup `Orders` tablosuna kaydediyor. `Webhook` ise ödeme tamamlandığında `Status` değerini `paid` olarak güncellemek için tasarlanmış.
+
+### `AdminController`
+Admin panelini, servis/portföy/blog yönetimini sağlar. (Bu kısmı kodda da bulunuyor ama ana menüde yalnızca admin girişli görünür.)
+
+---
+
+## 5. Görünümler ve menüler
+
+### `Views/Shared/_Layout.cshtml`
+Site şablonu:
+
+- Menüler:
+  - `Anasayfa`
+  - `Hakkımızda`
+  - `Hizmetler`
+  - `Portföy`
+  - `Belgeler` (blog listesi)
+  - `Ürünler`
+  - `İletişim`
+- `Tema değiştir` düğmesi
+- `Dil` dropdown’u
+- Oturum yoksa:
+  - `Giriş`
+  - `Kayıt Ol`
+- Admin girişli ise:
+  - `Panel`
+  - Kullanıcı adı ve `Çıkış`
+
+Bu menü tüm sayfalarda ortak.
+
+### `Home/Index.cshtml`
+Başlangıç sayfası:
+
+- Büyük bir hero bölümü
+- “İletişime Geç” ve “Hizmetleri İncele” butonları
+- “Proje performansı” kartı
+- Hizmet, portföy ve içerik tanıtımı kartları
+- Sayfayı gezmeye yönlendiren CTA düğmeleri
+
+### `Home/Services.cshtml`
+- `Service` kayıtlarını listeleyen kartlar
+- Her kartta:
+  - Başlık
+  - Açıklama
+  - `ActionText` butonu
+
+### `Home/Portfolio.cshtml`
+- `PortfolioItem` kayıtlarını gösterir
+- Her öğede:
+  - Kategori
+  - Başlık
+  - Açıklama
+  - `ActionText` butonu
+
+### `Home/Blog.cshtml`
+- Blog listeleme sayfası
+- Arama çubuğu
+- Kategori filtre düğmeleri
+- Her yazı kartında:
+  - Başlık
+  - Özet
+  - Görüntülenme sayısı
+  - `Devamını Oku` butonu
+- Sağda “En çok görüntülenenler” bölümü
+
+### `Home/BlogPost.cshtml`
+- Tek yazı detay sayfası
+- İçerik
+- Yorum sayısı
+- Yorum formu:
+  - Ad
+  - E-posta
+  - Mesaj
+  - `Yorum Gönder` butonu
+- Popüler yazılar listesi
+
+### `Home/Contact.cshtml`
+- İletişim formu:
+  - Adınız
+  - E-posta
+  - Konu
+  - Mesaj
+  - `Gönder` butonu
+- sağda statik iletişim bilgileri
+
+### `Account/Login.cshtml` / `Account/Register.cshtml`
+- Giriş formu
+- Kayıt formu
+- Formlarda `Giriş Yap` ve `Kayıt Ol` butonları
+- Kayıt sonrası `Giriş Yap` sayfasına yönlendirme
+
+### `Payments/Product.cshtml`
+- Stripe ödeme demo sayfası
+- “Stripe ile Öde” butonu
+- Not: kodda mantık `CreateCheckout(productId)` şeklinde ürün seçmeyi bekliyor, fakat sayfada bu form tam olarak modelle bağlanmamış. Yani bu sayfada Stripe entegrasyonu kısmen demo amaçlı.
+
+---
+
+## 6. Veri akışı nasıl çalışıyor?
+
+### Sayfayı açma
+- Kullanıcı `http://localhost:5000` açtığında `HomeController.Index()` çalışır.
+- Navbar tüm sayfalarda `_Layout` üzerinden gösterilir.
+
+### Hizmetler / Portföy / Blog
+- `Services` ve `Portfolio` verileri DB’den çekiliyor.
+- `Blog` sayfası hem tüm yazıları hem de kategori filtrelerini ve aramayı DB sorgusuyla getiriyor.
+
+### Blog yazısı ve yorum
+- `BlogPost` gösterildiğinde `ViewCount` artırılıyor.
+- Form gönderimi `SubmitComment` ile `BlogComments` tablosuna kaydediliyor.
+- Yorumlar tekrar listeleniyor.
+
+### İletişim formu
+- Form gönderildiğinde `ContactMessages` tablosuna kaydediliyor.
+- `Inbox` sayfası admin tarafından okunabilir.
+
+### Giriş / kayıt
+- `Register` kullanıcıyı `UserAccounts` tablosuna ekliyor.
+- `Login` ise aynı tablodan kontrol yapıyor.
+- Başarılıysa cookie ile giriş yapılıyor.
+- Admin yetkisi `Role` alanından geliyor.
+
+### Stripe ödeme
+- `PaymentsController.CreateCheckout` seçilen ürünü bulup Stripe oturumu oluşturuyor.
+- `Orders` tablosuna “created” statüsüyle kayıt giriyor.
+- Webhook ile ödeme tamamlandığında `Status` `paid` oluyor.
+
+---
+
+## 7. Bizim yaptığımız düzeltme
+
+Bu projede çalışmayı engelleyen esas sorun:
+- Uygulama veritabanına bağlanırken `Products` tablosu eksikti.
+- `Program.cs`’te `EnsureCreated()` kullanılması, hali hazırda var olan eski DB’yi modelle eşitlemiyordu.
+- Bu nedenle `SiteData.EnsureSeedData` içinde `context.Products.Any()` çağrısı hata veriyordu.
+
+Düzeltme:
+- `Program.cs`’te `EnsureCreated()` yerine `db.Database.Migrate()` kullandık.
+- `Migrations` oluşturduk (`InitialCreate`).
+- Eski `websitem.db` dosyasını silip veritabanını tekrar oluşturduk.
+- Böylece şema model ile eşitlendi ve `Products` tablosu oluştu.
+
+---
+
+## 8. Projenin temel menü / düğme yapısı
+
+### Ana menü
+- Anasayfa
+- Hakkımızda
+- Hizmetler
+- Portföy
+- Belgeler
+- Ürünler
+- İletişim
+- Tema değiştirme
+- Dil seçimi
+- Giriş / Kayıt
+- Admin paneli (sadece admin için)
+
+### Öne çıkan butonlar
+- `İletişime Geç`
+- `Hizmetleri İncele`
+- `Portföyü İncele`
+- `Belgeleri Oku`
+- `Yorum Gönder`
+- `Gönder`
+- `Stripe ile Öde`
+- `Giriş Yap`
+- `Kayıt Ol`
+- `Çıkış`
+
+---
+
+## 9. Özet
+
+Bu proje, gerçek bir küçük kurumsal site mimarisi oluşturmak için şu bileşenleri içeriyor:
+
+- MVC mimarisi
+- SQLite + Entity Framework Core
+- Veri tabanında dinamik içerik (hizmet, portföy, blog, yorum, mesaj, kullanıcı, ürün, sipariş)
+- Cookie tabanlı kullanıcı girişi
+- Admin yetkisi
+- Formlar ve listeler
+- Basit Stripe ödeme mantığı
+- Tekil sayfa içerikleri, hata sayfası ve ortak layout
+
+Eğer daha sonra öğrenmek istersen, adım adım şunları inceleyebilirsin:
+1. `Program.cs` → uygulama nasıl başlıyor
+2. `AppDbContext.cs` → hangi tablolar var
+3. `SiteData.cs` → başlangıç verileri nereden geliyor
+4. `HomeController.cs` → site içerik akışı
+5. `_Layout.cshtml` → menü + navbar + butonlar
+6. `Views/Home/*.cshtml` → kullanıcıya gösterilen sayfalar
+7. `AccountController.cs` ve `Views/Account/*` → kullanıcı auth
+8. `PaymentsController.cs` + `Models/Product.cs` / `Order.cs` → Stripe ödeme

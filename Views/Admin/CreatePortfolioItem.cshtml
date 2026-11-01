@@ -1,0 +1,35 @@
+@model web_sitem.Models.PortfolioItem
+
+@{
+    ViewData["Title"] = "Yeni Portföy Öğesi Ekle";
+}
+
+<div class="container py-5">
+    <h1 class="display-5">Yeni Portföy Öğesi Ekle</h1>
+    <form asp-action="CreatePortfolioItem" method="post">
+        <div class="mb-3">
+            <label class="form-label">Başlık</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Kategori</label>
+            <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Açıklama</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Buton Metni</label>
+            <input asp-for="ActionText" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Görsel URL</label>
+            <input asp-for="ImageUrl" class="form-control" placeholder="/images/placeholder-portfolio.svg" />
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>

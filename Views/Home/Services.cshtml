@@ -1,0 +1,37 @@
+﻿@model IReadOnlyList<web_sitem.Models.Service>
+
+@{
+    ViewData["Title"] = "Hizmetler";
+}
+
+<section class="page-hero container">
+    <span class="eyebrow">Hizmetler</span>
+    <h1>İşletmeniz için kapsamlı dijital hizmetler.</h1>
+    <p>Web tasarım, e-ticaret ve dijital pazarlama alanlarında ihtiyaçlarınıza uygun, ölçeklenebilir çözümler sunuyoruz.</p>
+</section>
+
+<section class="container section">
+    <div class="section-grid">
+        @foreach (var service in Model)
+        {
+            <div class="card h-100">
+                <div class="card-image">
+                    @if (!string.IsNullOrWhiteSpace(service.ImageUrl))
+                    {
+                        <img src="@service.ImageUrl" alt="@service.Title" loading="lazy" />
+                    }
+                    else
+                    {
+                        <div class="image-fallback">@service.Icon</div>
+                    }
+                </div>
+                <div class="card-body">
+                    <div class="eyebrow">Özel çözüm</div>
+                    <h3 class="card-title">@service.Title</h3>
+                    <p class="card-text">@service.Description</p>
+                    <a class="btn btn-primary mt-3" href="#">@service.ActionText</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

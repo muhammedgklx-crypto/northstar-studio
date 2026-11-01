@@ -1,0 +1,47 @@
+﻿@model web_sitem.Models.ContactFormModel
+
+@{
+    ViewData["Title"] = "İletişim";
+}
+
+<section class="page-hero container">
+    <span class="eyebrow">İletişim</span>
+    <h1>Yeni bir proje ya da iş birliği için bize ulaşın.</h1>
+    <p>İletişim formunu doldurun, kısa sürede size dönüş yapalım.</p>
+</section>
+
+<section class="container section">
+    <div class="split-grid">
+        <div class="form-card">
+            <form asp-action="Contact" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="mb-3">
+                    <label class="form-label" for="Name">Adınız</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="Email">E-posta</label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="Subject">Konu</label>
+                    <input asp-for="Subject" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="Message">Mesajınız</label>
+                    <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+        </div>
+        <div class="content-card">
+            <h2 class="card-title">İletişim bilgileri</h2>
+            <p class="card-text">İsterseniz telefon, e-posta ya da çevrimiçi görüşme ile iletişime geçebilirsiniz.</p>
+            <ul class="list-unstyled mt-3">
+                <li>📍 İstanbul, Türkiye</li>
+                <li>✉️ info@northstarstudio.com</li>
+                <li>📞 +90 212 000 00 00</li>
+            </ul>
+        </div>
+    </div>
+</section>

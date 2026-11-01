@@ -1,0 +1,35 @@
+@model IReadOnlyList<web_sitem.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Blog Yönetimi";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5">Belgeler ve Makaleler</h1>
+            <p class="text-muted">Yeni metin belgeleri ekleyin, düzenleyin, silin ve görünümlerini takip edin.</p>
+        </div>
+        <a class="btn btn-success" asp-action="CreateBlogPost">Yeni Yazı Ekle</a>
+    </div>
+
+    <div class="list-group">
+        @foreach (var post in Model)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-start gap-3">
+                <div>
+                    <h5>@post.Title</h5>
+                    <p class="mb-1">@post.Category — @post.Summary</p>
+                    <span class="badge">Görüntülenme: @post.ViewCount</span>
+                </div>
+                <div class="d-flex gap-2">
+                    <a class="btn btn-outline-primary" asp-action="EditBlogPost" asp-route-id="@post.Id">Düzenle</a>
+                    <form asp-action="DeleteBlogPost" method="post" class="m-0">
+                        <input type="hidden" name="id" value="@post.Id" />
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

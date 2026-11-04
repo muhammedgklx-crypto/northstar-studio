@@ -360,11 +360,16 @@ body[data-theme="dark"] .form-card {
  font-size: 1.05rem;
  font-weight: 700;
  margin-bottom: 0.55rem;
+ color: var(--text);
 }
 
 .card-text, .card p {
  color: var(--text-muted);
  line-height: 1.7;
+}
+
+.card-body h3, .card-body h2, .content-card h2, .content-card h3 {
+ color: var(--text);
 }
 
 .page-hero {

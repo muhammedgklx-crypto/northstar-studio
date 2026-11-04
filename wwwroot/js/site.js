@@ -368,6 +368,103 @@
         }
     };
 
+    // Dinamik kart içerikleri: veritabanındaki Türkçe metin -> İngilizce
+    // Anahtar = Türkçe metnin kendisi, değer = İngilizce karşılığı
+    const dynamicTranslations = {
+        en: {
+            'Kurumsal Web Tasarım': 'Corporate Web Design',
+            'E-Ticaret Çözümleri': 'E-Commerce Solutions',
+            'Dijital Pazarlama': 'Digital Marketing',
+            'Süreç ve Otomasyon': 'Process & Automation',
+            'Marka değerini yükselten, kullanıcı dostu ve hızlı kurumsal web siteleri tasarlıyoruz.': 'We design corporate websites that elevate brand value, are user-friendly and fast.',
+            'Ürün keşfi, güvenli ödeme ve mobil satış deneyimini tek çatı altında optimize ediyoruz.': 'We optimize product discovery, secure payment and mobile sales experience in a single roof.',
+            'SEO, içerik ve reklam stratejileriyle marka görünürlüğünü artırıyoruz.': 'We increase brand visibility with SEO, content and advertising strategies.',
+            'İş akışlarınızı otomatikleştiren özel çözümler geliştiriyoruz.': 'We develop custom solutions that automate your workflows.',
+            'İncele': 'Explore',
+            'Detayları Gör': 'View Details',
+            'Hemen Başla': 'Get Started',
+            'Tavsiye Al': 'Get Advice',
+            'Görüntüle': 'View',
+            'Keşfet': 'Discover',
+            'Eğitim Portalı': 'Education Portal',
+            'Kafe Web Sitesi': 'Cafe Website',
+            'Kurumsal Site': 'Corporate Site',
+            'Sağlık Kliniği': 'Health Clinic',
+            'Web Uygulaması': 'Web Application',
+            'Marka Hikayesi': 'Brand Story',
+            'Kurumsal': 'Corporate',
+            'Hizmet': 'Service',
+            'Öğrenci, öğretmen ve yönetim panelini tek bir deneyimde birleştiren modern portal.': 'Modern portal that combines student, teacher and management panel in a single experience.',
+            'Rezervasyon, menü ve sosyal medya içerik akışını bütünleştiren butik site.': 'Boutique site integrating reservation, menu and social media content flow.',
+            'Profesyonel görünüm ve hızlı içerik yönetimiyle markayı öne çıkaran çözüm.': 'Solution that highlights the brand with a professional look and fast content management.',
+            'Randevu, iletişim ve hizmet tanıtımı odaklı geliştirilmiş dijital ağı.': 'Digital network focused on appointment, communication and service promotion.',
+            'Güncel Web Tasarım Trendleri': 'Current Web Design Trends',
+            'SEO ile Organik Ziyaret Artırma': 'Increasing Organic Traffic with SEO',
+            'İletişim Formu Dönüştürme Kuralları': 'Contact Form Conversion Rules',
+            'Mobil İlk Dijital Deneyim': 'Mobile First Digital Experience',
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
+            'Arama motorlarında görünürlüğünüzü yükselten temel stratejileri öğrenin.': 'Learn the core strategies that increase your visibility in search engines.',
+            'Formların dönüşüm oranını artırmak için uygulanabilecek etkili yöntemler.': 'Effective methods to increase form conversion rates.',
+            'Mobil kullanıcı davranışına göre şekillenen modern site yapıları.': 'Modern site structures shaped by mobile user behavior.',
+            'Tasarım': 'Design',
+            'Pazarlama': 'Marketing',
+            'İletişim': 'Contact',
+            'Ürün': 'Product',
+            'Örnek Ürün A': 'Sample Product A',
+            'Örnek Ürün B': 'Sample Product B',
+            'Kısa açıklama A': 'Short description A',
+            'Kısa açıklama B': 'Short description B',
+            'Özel çözüm': 'Custom solution',
+            'Örnek Ürün': 'Sample Product'
+        },
+        tr: {
+            'Kurumsal Web Tasarım': 'Kurumsal Web Tasarım',
+            'E-Ticaret Çözümleri': 'E-Ticaret Çözümleri',
+            'Dijital Pazarlama': 'Dijital Pazarlama',
+            'Süreç ve Otomasyon': 'Süreç ve Otomasyon',
+            'Marka değerini yükselten, kullanıcı dostu ve hızlı kurumsal web siteleri tasarlıyoruz.': 'Marka değerini yükselten, kullanıcı dostu ve hızlı kurumsal web siteleri tasarlıyoruz.',
+            'Ürün keşfi, güvenli ödeme ve mobil satış deneyimini tek çatı altında optimize ediyoruz.': 'Ürün keşfi, güvenli ödeme ve mobil satış deneyimini tek çatı altında optimize ediyoruz.',
+            'SEO, içerik ve reklam stratejileriyle marka görünürlüğünü artırıyoruz.': 'SEO, içerik ve reklam stratejileriyle marka görünürlüğünü artırıyoruz.',
+            'İş akışlarınızı otomatikleştiren özel çözümler geliştiriyoruz.': 'İş akışlarınızı otomatikleştiren özel çözümler geliştiriyoruz.',
+            'İncele': 'İncele',
+            'Detayları Gör': 'Detayları Gör',
+            'Hemen Başla': 'Hemen Başla',
+            'Tavsiye Al': 'Tavsiye Al',
+            'Görüntüle': 'Görüntüle',
+            'Keşfet': 'Keşfet',
+            'Eğitim Portalı': 'Eğitim Portalı',
+            'Kafe Web Sitesi': 'Kafe Web Sitesi',
+            'Kurumsal Site': 'Kurumsal Site',
+            'Sağlık Kliniği': 'Sağlık Kliniği',
+            'Web Uygulaması': 'Web Uygulaması',
+            'Marka Hikayesi': 'Marka Hikayesi',
+            'Kurumsal': 'Kurumsal',
+            'Hizmet': 'Hizmet',
+            'Öğrenci, öğretmen ve yönetim panelini tek bir deneyimde birleştiren modern portal.': 'Öğrenci, öğretmen ve yönetim panelini tek bir deneyimde birleştiren modern portal.',
+            'Rezervasyon, menü ve sosyal medya içerik akışını bütünleştiren butik site.': 'Rezervasyon, menü ve sosyal medya içerik akışını bütünleştiren butik site.',
+            'Profesyonel görünüm ve hızlı içerik yönetimiyle markayı öne çıkaran çözüm.': 'Profesyonel görünüm ve hızlı içerik yönetimiyle markayı öne çıkaran çözüm.',
+            'Randevu, iletişim ve hizmet tanıtımı odaklı geliştirilmiş dijital ağı.': 'Randevu, iletişim ve hizmet tanıtımı odaklı geliştirilmiş dijital ağı.',
+            'Güncel Web Tasarım Trendleri': 'Güncel Web Tasarım Trendleri',
+            'SEO ile Organik Ziyaret Artırma': 'SEO ile Organik Ziyaret Artırma',
+            'İletişim Formu Dönüştürme Kuralları': 'İletişim Formu Dönüştürme Kuralları',
+            'Mobil İlk Dijital Deneyim': 'Mobil İlk Dijital Deneyim',
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.',
+            'Arama motorlarında görünürlüğünüzü yükselten temel stratejileri öğrenin.': 'Arama motorlarında görünürlüğünüzü yükselten temel stratejileri öğrenin.',
+            'Formların dönüşüm oranını artırmak için uygulanabilecek etkili yöntemler.': 'Formların dönüşüm oranını artırmak için uygulanabilecek etkili yöntemler.',
+            'Mobil kullanıcı davranışına göre şekillenen modern site yapıları.': 'Mobil kullanıcı davranışına göre şekillenen modern site yapıları.',
+            'Tasarım': 'Tasarım',
+            'Pazarlama': 'Pazarlama',
+            'İletişim': 'İletişim',
+            'Ürün': 'Ürün',
+            'Örnek Ürün A': 'Örnek Ürün A',
+            'Örnek Ürün B': 'Örnek Ürün B',
+            'Kısa açıklama A': 'Kısa açıklama A',
+            'Kısa açıklama B': 'Kısa açıklama B',
+            'Özel çözüm': 'Özel çözüm',
+            'Örnek Ürün': 'Örnek Ürün'
+        }
+    };
+
     function applyTranslations(lang) {
         document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -383,6 +480,18 @@
                 el.placeholder = translations[lang][key];
             }
         });
+        // Dinamik kart içerikleri (veritabanından gelen metinler)
+        // TR metni sözlükteki anahtarla eşleşirse EN karşılığına çevrilir
+        const dt = dynamicTranslations[lang];
+        if (dt) {
+            document.querySelectorAll('.card-title, .card-text, .badge, .card .btn, .chip').forEach(el => {
+                const txt = el.textContent.trim();
+                // Sadece metni birebir eşleşen elementleri çevir
+                if (dt[txt]) {
+                    el.textContent = dt[txt];
+                }
+            });
+        }
         // Sayfa başlığını çevir
         const titleEl = document.querySelector('title');
         if (titleEl) {

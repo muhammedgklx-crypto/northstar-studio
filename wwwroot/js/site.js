@@ -417,7 +417,20 @@
             'Özel çözüm': 'Custom solution',
             'Örnek Ürün': 'Sample Product',
             '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)': '(Real keys must be provided in appsettings.json as Stripe:SecretKey and PublishableKey.)',
-            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.'
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
+            // BlogPost detay metinleri
+            'SEO ile Organik Ziyaret Artırma': 'Increasing Organic Traffic with SEO',
+            'Doğru anahtar kelimeler, içerik kalitesi ve hızlı web sitesi performansı organik trafiği artırır.': 'Correct keywords, content quality and fast website performance increase organic traffic.',
+            'SEO, bir web sitesinin sürdürülebilir başarısı için kritik öneme sahiptir. Doğru içerik planı, teknik optimizasyon ve sürekli analiz ile markanız daha fazla ziyaretçi çeker.': 'SEO is critical for the sustainable success of a website. With the right content plan, technical optimization and continuous analysis, your brand attracts more visitors.',
+            'Mobil İlk Dijital Deneyim': 'Mobile First Digital Experience',
+            'Mobil cihazların ağırlığı arttıkça sitelerin taşınabilir tasarım yaklaşımı kritik hale geliyor.': 'As mobile devices become more prevalent, sites\' portable design approach becomes critical.',
+            'Mobil ilk yaklaşım, kullanıcıyı önceleyen bir tasarım dilidir. Düzenin, yükleme hızının ve etkileşimlerin mobil ekranlarda kusursuz çalışması gerekir.': 'Mobile first is a design language that prioritizes the user. Layout, load speed and interactions must work flawlessly on mobile screens.',
+            'İletişim Formu Dönüştürme Kuralları': 'Contact Form Conversion Rules',
+            'Basit, açıklayıcı ve kısa formlar daha fazla dönüşüm sağlar.': 'Simple, clear and short forms provide greater conversion.',
+            'İyi tasarlanmış iletişim formları, ziyaretçi güvenini kazanmak ve hızlı iletişim kurmak için önemlidir. Hedefe yönelik kısa sorular ve net çağrı metinleri bu süreci olumlu etkiler.': 'Well-designed contact forms are important for gaining visitor trust and establishing quick communication. Targeted short questions and clear call-to-action texts positively influence this process.',
+            'Güncel Web Tasarım Trendleri': 'Current Web Design Trends',
+            'Web tasarımında sadeleşme ve performansa odaklanmak, kullanıcı memnuniyetini artırır.': 'Focusing on simplicity and performance in web design increases user satisfaction.',
+            'Dijital ürünler artık daha hızlı, daha yalın ve daha erişilebilir olmak zorunda. Bu nedenle modern web siteleri, sadelik ve performans odaklı bir yapı ile kullanıcıların beklentilerini karşılıyor.': 'Digital products must now be faster, leaner and more accessible. Therefore, modern websites meet user expectations with a structure focused on simplicity and performance.'
         },
         tr: {
             'Kurumsal Web Tasarım': 'Kurumsal Web Tasarım',
@@ -465,7 +478,20 @@
             'Özel çözüm': 'Özel çözüm',
             'Örnek Ürün': 'Örnek Ürün',
             '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)': '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)',
-            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.'
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.',
+            // BlogPost detay metinleri
+            'SEO ile Organik Ziyaret Artırma': 'SEO ile Organik Ziyaret Artırma',
+            'Doğru anahtar kelimeler, içerik kalitesi ve hızlı web sitesi performansı organik trafiği artırır.': 'Doğru anahtar kelimeler, içerik kalitesi ve hızlı web sitesi performansı organik trafiği artırır.',
+            'SEO, bir web sitesinin sürdürülebilir başarısı için kritik öneme sahiptir. Doğru içerik planı, teknik optimizasyon ve sürekli analiz ile markanız daha fazla ziyaretçi çeker.': 'SEO, bir web sitesinin sürdürülebilir başarısı için kritik öneme sahiptir. Doğru içerik planı, teknik optimizasyon ve sürekli analiz ile markanız daha fazla ziyaretçi çeker.',
+            'Mobil İlk Dijital Deneyim': 'Mobil İlk Dijital Deneyim',
+            'Mobil cihazların ağırlığı arttıkça sitelerin taşınabilir tasarım yaklaşımı kritik hale geliyor.': 'Mobil cihazların ağırlığı arttıkça sitelerin taşınabilir tasarım yaklaşımı kritik hale geliyor.',
+            'Mobil ilk yaklaşım, kullanıcıyı önceleyen bir tasarım dilidir. Düzenin, yükleme hızının ve etkileşimlerin mobil ekranlarda kusursuz çalışması gerekir.': 'Mobil ilk yaklaşım, kullanıcıyı önceleyen bir tasarım dilidir. Düzenin, yükleme hızının ve etkileşimlerin mobil ekranlarda kusursuz çalışması gerekir.',
+            'İletişim Formu Dönüştürme Kuralları': 'İletişim Formu Dönüştürme Kuralları',
+            'Basit, açıklayıcı ve kısa formlar daha fazla dönüşüm sağlar.': 'Basit, açıklayıcı ve kısa formlar daha fazla dönüşüm sağlar.',
+            'İyi tasarlanmış iletişim formları, ziyaretçi güvenini kazanmak ve hızlı iletişim kurmak için önemlidir. Hedefe yönelik kısa sorular ve net çağrı metinleri bu süreci olumlu etkiler.': 'İyi tasarlanmış iletişim formları, ziyaretçi güvenini kazanmak ve hızlı iletişim kurmak için önemlidir. Hedefe yönelik kısa sorular ve net çağrı metinleri bu süreci olumlu etkiler.',
+            'Güncel Web Tasarım Trendleri': 'Güncel Web Tasarım Trendleri',
+            'Web tasarımında sadeleşme ve performansa odaklanmak, kullanıcı memnuniyetini artırır.': 'Web tasarımında sadeleşme ve performansa odaklanmak, kullanıcı memnuniyetini artırır.',
+            'Dijital ürünler artık daha hızlı, daha yalın ve daha erişilebilir olmak zorunda. Bu nedenle modern web siteleri, sadelik ve performans odaklı bir yapı ile kullanıcıların beklentilerini karşılıyor.': 'Dijital ürünler artık daha hızlı, daha yalın ve daha erişilebilir olmak zorunda. Bu nedenle modern web siteleri, sadelik ve performans odaklı bir yapı ile kullanıcıların beklentilerini karşılıyor.'
         }
     };
 
@@ -489,7 +515,7 @@
         // EN->TR çevirisi (TR seçkeni): eğer metin EN sözlükte değer olarak varsa, TR anahtarı bul
         const dt = dynamicTranslations[lang];
         if (dt) {
-            document.querySelectorAll('.card-title, .card-text, .badge, .card .btn, .chip').forEach(el => {
+            document.querySelectorAll('.card-title, .card-text, .badge, .card .btn, .chip, h1, h2, h3, .display-5, .lead, article p, .text-muted').forEach(el => {
                 const txt = el.textContent.trim();
                 // Her iki yönde de eşleşme arama
                 if (dt[txt]) {

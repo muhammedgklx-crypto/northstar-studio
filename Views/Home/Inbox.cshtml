@@ -5,12 +5,12 @@
 }
 
 <div class="container py-5">
-    <h1 class="display-5">Gelen Mesajlar</h1>
-    <p class="lead">Son iletişim talepleri ve mesajlar burada listelenir.</p>
+    <h1 class="display-5" data-i18n="inbox.title">Gelen Mesajlar</h1>
+    <p class="lead" data-i18n="inbox.desc">Son iletişim talepleri ve mesajlar burada listelenir.</p>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info">Henüz yeni mesaj yok.</div>
+        <div class="alert alert-info" data-i18n="inbox.no-messages">Henüz yeni mesaj yok.</div>
     }
     else
     {

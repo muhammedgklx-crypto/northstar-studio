@@ -7,26 +7,26 @@
         <div class="col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h1 class="h3 mb-3">Kayıt Ol</h1>
+                    <h1 class="h3 mb-3" data-i18n="register.title">Kayıt Ol</h1>
                     <form asp-action="Register" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                         <div class="mb-3">
-                            <label class="form-label" for="name">Adınız</label>
+                            <label class="form-label" data-i18n="register.label-name" for="name">Adınız</label>
                             <input type="text" name="name" class="form-control" required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="email">E-posta</label>
+                            <label class="form-label" data-i18n="register.label-email" for="email">E-posta</label>
                             <input type="email" name="email" class="form-control" required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="password">Parola</label>
+                            <label class="form-label" data-i18n="register.label-password" for="password">Parola</label>
                             <input type="password" name="password" class="form-control" required />
                         </div>
-                        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="register.btn-register">Kayıt Ol</button>
                     </form>
                 </div>
             </div>
-            <p class="mt-3 text-center">Zaten hesabın var mı? <a asp-action="Login">Giriş Yap</a></p>
+            <p class="mt-3 text-center" data-i18n="register.have-account">Zaten hesabın var mı? <a data-i18n="register.link-login" asp-action="Login">Giriş Yap</a></p>
         </div>
     </div>
 </div>

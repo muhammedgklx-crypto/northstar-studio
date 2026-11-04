@@ -5,9 +5,9 @@
 }
 
 <section class="page-hero container">
-    <span class="eyebrow">İletişim</span>
-    <h1>Yeni bir proje ya da iş birliği için bize ulaşın.</h1>
-    <p>İletişim formunu doldurun, kısa sürede size dönüş yapalım.</p>
+    <span class="eyebrow" data-i18n="contact.eyebrow">İletişim</span>
+    <h1 data-i18n="contact.title">Yeni bir proje ya da iş birliği için bize ulaşın.</h1>
+    <p data-i18n="contact.desc">İletişim formunu doldurun, kısa sürede size dönüş yapalım.</p>
 </section>
 
 <section class="container section">
@@ -16,27 +16,27 @@
             <form asp-action="Contact" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                 <div class="mb-3">
-                    <label class="form-label" for="Name">Adınız</label>
+                    <label class="form-label" data-i18n="contact.label-name" for="Name">Adınız</label>
                     <input asp-for="Name" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="Email">E-posta</label>
+                    <label class="form-label" data-i18n="contact.label-email" for="Email">E-posta</label>
                     <input asp-for="Email" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="Subject">Konu</label>
+                    <label class="form-label" data-i18n="contact.label-subject" for="Subject">Konu</label>
                     <input asp-for="Subject" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="Message">Mesajınız</label>
+                    <label class="form-label" data-i18n="contact.label-message" for="Message">Mesajınız</label>
                     <textarea asp-for="Message" class="form-control" rows="5"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Gönder</button>
+                <button type="submit" class="btn btn-primary" data-i18n="contact.btn-send">Gönder</button>
             </form>
         </div>
         <div class="content-card">
-            <h2 class="card-title">İletişim bilgileri</h2>
-            <p class="card-text">İsterseniz telefon, e-posta ya da çevrimiçi görüşme ile iletişime geçebilirsiniz.</p>
+            <h2 class="card-title" data-i18n="contact.info-title">İletişim bilgileri</h2>
+            <p class="card-text" data-i18n="contact.info-desc">İsterseniz telefon, e-posta ya da çevrimiçi görüşme ile iletişime geçebilirsiniz.</p>
             <ul class="list-unstyled mt-3">
                 <li>📍 İstanbul, Türkiye</li>
                 <li>✉️ info@northstarstudio.com</li>

@@ -4,9 +4,9 @@
 
 <div class="container py-5">
     <div class="content-card">
-        <h1>Teşekkürler — Ödeme Alındı</h1>
-        <p class="lead">Ödemeniz başarılı olarak işlendi.</p>
-        <p>Oturum ID: <strong>@ViewData["SessionId"]</strong></p>
-        <a class="btn btn-primary mt-3" asp-controller="Home" asp-action="Index">Anasayfaya Dön</a>
+        <h1 data-i18n="checkout.title">Teşekkürler — Ödeme Alındı</h1>
+        <p class="lead" data-i18n="checkout.desc">Ödemeniz başarılı olarak işlendi.</p>
+        <p><span data-i18n="checkout.session-id">Oturum ID:</span> <strong>@ViewData["SessionId"]</strong></p>
+        <a class="btn btn-primary mt-3" data-i18n="checkout.btn-home" asp-controller="Home" asp-action="Index">Anasayfaya Dön</a>
     </div>
 </div>

@@ -4,9 +4,9 @@
 
 <div class="container py-5">
     <div class="content-card">
-        <h1>Örnek Ürün</h1>
-        <p class="lead">Bu, Stripe Checkout ile ödemeyi demonstrasyon amaçlı gösteren basit bir ürün sayfasıdır.</p>
-        <p>Fiyat: <strong>$50.00</strong></p>
+        <h1 data-i18n="product.title">Örnek Ürün</h1>
+        <p class="lead" data-i18n="product.desc">Bu, Stripe Checkout ile ödemeyi demonstrasyon amaçlı gösteren basit bir ürün sayfasıdır.</p>
+        <p><span data-i18n="product.price">Fiyat:</span> <strong>$50.00</strong></p>
 
         @if (TempData["Error"] != null)
         {
@@ -15,7 +15,7 @@
 
         <form asp-action="CreateCheckout" method="post">
             <input name="amountCents" type="hidden" value="5000" />
-            <button type="submit" class="btn btn-primary">Stripe ile Öde</button>
+            <button type="submit" class="btn btn-primary" data-i18n="product.btn-pay">Stripe ile Öde</button>
         </form>
 
         <p class="mt-3 text-muted">(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)</p>

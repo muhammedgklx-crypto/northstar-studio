@@ -12,20 +12,20 @@
         }
         <span class="badge">@Model.Post.Category</span>
         <h1 class="display-5 mt-3">@Model.Post.Title</h1>
-        <p class="text-muted">@Model.Post.PublishedAt.ToString("dd MMMM yyyy") · @Model.Post.ViewCount görüntülenme</p>
+        <p class="text-muted">@Model.Post.PublishedAt.ToString("dd MMMM yyyy") · <span data-i18n="blogpost.views">@Model.Post.ViewCount görüntülenme</span></p>
         <p class="lead">@Model.Post.Excerpt</p>
 
         <article class="mt-4">
             <p>@Model.Post.Content</p>
         </article>
 
-        <a class="btn btn-outline-primary mt-4" asp-action="Blog">Tüm Belgeleri Gör</a>
+        <a class="btn btn-outline-primary mt-4" data-i18n="blogpost.btn-view-all" asp-action="Blog">Tüm Belgeleri Gör</a>
     </div>
 
     <div class="section">
         <div class="section-title">
-            <h2>Yorumlar</h2>
-            <p>@Model.Comments.Count yorum</p>
+            <h2 data-i18n="blogpost.comments">Yorumlar</h2>
+            <p><span data-i18n="blogpost.comment-count">@Model.Comments.Count yorum</span></p>
         </div>
 
         <div class="content-card comment-form">
@@ -33,19 +33,19 @@
             <form asp-action="SubmitComment" asp-route-slug="@Model.Post.Slug" method="post">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label">Adınız</label>
+                        <label class="form-label" data-i18n="blogpost.label-name">Adınız</label>
                         <input asp-for="NewComment.Name" class="form-control" />
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">E-posta</label>
+                        <label class="form-label" data-i18n="blogpost.label-email">E-posta</label>
                         <input asp-for="NewComment.Email" class="form-control" type="email" />
                     </div>
                     <div class="col-12">
-                        <label class="form-label">Yorumunuz</label>
+                        <label class="form-label" data-i18n="blogpost.label-comment">Yorumunuz</label>
                         <textarea asp-for="NewComment.Message" class="form-control" rows="4"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Yorum Gönder</button>
+                <button type="submit" class="btn btn-primary mt-3" data-i18n="blogpost.btn-submit">Yorum Gönder</button>
             </form>
         </div>
 
@@ -67,16 +67,16 @@
         else
         {
             <div class="content-card empty-state mt-4">
-                <h3>Henüz yorum yok.</h3>
-                <p>İlk yorumu siz bırakın.</p>
+                <h3 data-i18n="blogpost.no-comments">Henüz yorum yok.</h3>
+                <p data-i18n="blogpost.no-comments-desc">İlk yorumu siz bırakın.</p>
             </div>
         }
     </div>
 
     <div class="popular-section mt-5">
         <div class="section-title">
-            <h2>En çok görüntülenenler</h2>
-            <p>Benzer içerikler</p>
+            <h2 data-i18n="blogpost.popular-title">En çok görüntülenenler</h2>
+            <p data-i18n="blogpost.popular-desc">Benzer içerikler</p>
         </div>
         <div class="section-grid">
             @foreach (var post in Model.PopularPosts)
@@ -86,7 +86,7 @@
                         <span class="badge">@post.Category</span>
                         <h3 class="card-title mt-3">@post.Title</h3>
                         <p class="card-text">@post.Summary</p>
-                        <a class="btn btn-secondary mt-3" asp-action="BlogPost" asp-route-slug="@post.Slug">Oku</a>
+                        <a class="btn btn-secondary mt-3" data-i18n="blogpost.btn-read" asp-action="BlogPost" asp-route-slug="@post.Slug">Oku</a>
                     </div>
                 </div>
             }

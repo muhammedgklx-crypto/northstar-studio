@@ -1,17 +1,16 @@
 ﻿// Site JS: PWA service worker registration, simple client-side i18n, and helpers
 
 (function () {
-    // Service Worker registration for PWA
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/service-worker.js').then(function (reg) {
-                // registered
-                console.log('Service worker registered.', reg);
-            }).catch(function (err) {
-                console.warn('Service worker registration failed:', err);
-            });
-        });
-    }
+    // Service Worker registration for PWA (disabled to avoid cache errors)
+    // if ('serviceWorker' in navigator) {
+    //     window.addEventListener('load', function () {
+    //         navigator.serviceWorker.register('/service-worker.js').then(function (reg) {
+    //             console.log('Service worker registered.', reg);
+    //         }).catch(function (err) {
+    //             console.warn('Service worker registration failed:', err);
+    //         });
+    //     });
+    // }
 
     // Simple client-side i18n: keys mapped in translations object below
     const translations = {

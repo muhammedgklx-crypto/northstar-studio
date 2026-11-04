@@ -415,7 +415,9 @@
             'Kısa açıklama A': 'Short description A',
             'Kısa açıklama B': 'Short description B',
             'Özel çözüm': 'Custom solution',
-            'Örnek Ürün': 'Sample Product'
+            'Örnek Ürün': 'Sample Product',
+            '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)': '(Real keys must be provided in appsettings.json as Stripe:SecretKey and PublishableKey.)',
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.'
         },
         tr: {
             'Kurumsal Web Tasarım': 'Kurumsal Web Tasarım',
@@ -461,7 +463,9 @@
             'Kısa açıklama A': 'Kısa açıklama A',
             'Kısa açıklama B': 'Kısa açıklama B',
             'Özel çözüm': 'Özel çözüm',
-            'Örnek Ürün': 'Örnek Ürün'
+            'Örnek Ürün': 'Örnek Ürün',
+            '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)': '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)',
+            '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.'
         }
     };
 

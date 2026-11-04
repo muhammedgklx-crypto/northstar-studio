@@ -485,14 +485,31 @@
             }
         });
         // Dinamik kart içerikleri (veritabanından gelen metinler)
-        // TR metni sözlükteki anahtarla eşleşirse EN karşılığına çevrilir
+        // TR->EN çevirisi (EN seçkeni): eğer metin EN sözlükte anahtar olarak varsa, çevir
+        // EN->TR çevirisi (TR seçkeni): eğer metin EN sözlükte değer olarak varsa, TR anahtarı bul
         const dt = dynamicTranslations[lang];
         if (dt) {
             document.querySelectorAll('.card-title, .card-text, .badge, .card .btn, .chip').forEach(el => {
                 const txt = el.textContent.trim();
-                // Sadece metni birebir eşleşen elementleri çevir
+                // Her iki yönde de eşleşme arama
                 if (dt[txt]) {
                     el.textContent = dt[txt];
+                } else if (lang === 'tr') {
+                    // EN metni TR'ye çevirmeye çalış: EN sözlükte değer olarak ara, TR anahtarı bul
+                    const enDt = dynamicTranslations['en'];
+                    for (const trKey in enDt) {
+                        if (enDt[trKey] === txt) {
+                            el.textContent = trKey;
+                            break;
+                        }
+                    }
+                }
+            });
+            // Input placeholder'ları da çevir
+            document.querySelectorAll('[placeholder]').forEach(el => {
+                const ph = el.placeholder.trim();
+                if (dt[ph]) {
+                    el.placeholder = dt[ph];
                 }
             });
         }

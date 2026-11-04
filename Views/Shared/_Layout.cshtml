@@ -3,26 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebSiteX</title>
+    <title>@ViewData["Title"] - Northstar Studio</title>
     <meta name="description" content="@ViewData["Description"]" />
     <meta name="theme-color" content="#0d6efd" />
     <link rel="manifest" href="~/manifest.json" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    <!-- Google Analytics: replace MEASUREMENT_ID with your ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'MEASUREMENT_ID');
-    </script>
 </head>
 <body class="site-body">
     <header class="site-header">
         <nav class="navbar navbar-expand-lg container py-3">
-            <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Northstar Studio</a>
+            <a class="navbar-brand fw-bold" data-i18n="brand" asp-area="" asp-controller="Home" asp-action="Index">Northstar Studio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,10 +29,10 @@
                     <li class="nav-item"><a class="nav-link" data-i18n="nav.products" asp-area="" asp-controller="Payments" asp-action="Product">Ürünler</a></li>
                     <li class="nav-item"><a class="nav-link" data-i18n="nav.contact" asp-area="" asp-controller="Home" asp-action="Contact">İletişim</a></li>
                     <li class="nav-item">
-                        <button id="themeToggle" class="theme-toggle" type="button" title="Temayı değiştir" aria-label="Temayı değiştir">🌙</button>
+                        <button id="themeToggle" class="theme-toggle" type="button" title="Temayı değiştir" aria-label="Temayı değiştir" data-i18n="theme.toggle">🌙</button>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="langMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dil</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="langMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="lang.menu">Dil</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langMenu">
                             <li><a class="dropdown-item lang-select" href="#" data-lang="tr">Türkçe</a></li>
                             <li><a class="dropdown-item lang-select" href="#" data-lang="en">English</a></li>
@@ -50,15 +42,15 @@
                     {
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Dashboard">Panel</a></li>
+                            <li class="nav-item"><a class="nav-link" data-i18n="btn.panel" asp-area="" asp-controller="Admin" asp-action="Dashboard">Panel</a></li>
                         }
                         <li class="nav-item"><span class="nav-link text-light">@User.Identity.Name</span></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout">Çıkış</a></li>
+                        <li class="nav-item"><a class="nav-link" data-i18n="btn.logout" asp-controller="Account" asp-action="Logout">Çıkış</a></li>
                     }
                     else
                     {
-                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Giriş</a></li>
-                        <li class="nav-item"><a class="nav-link btn-nav" asp-controller="Account" asp-action="Register">Kayıt Ol</a></li>
+                        <li class="nav-item"><a class="nav-link" data-i18n="btn.login" asp-controller="Account" asp-action="Login">Giriş</a></li>
+                        <li class="nav-item"><a class="nav-link btn-nav" data-i18n="btn.register" asp-controller="Account" asp-action="Register">Kayıt Ol</a></li>
                     }
                 </ul>
             </div>
@@ -71,10 +63,10 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>&copy; 2026 Northstar Studio. Tüm hakları saklıdır.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Northstar Studio. Tüm hakları saklıdır.</p>
             <ul class="footer-links">
-                <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Destek</a></li>
+                <li><a data-i18n="footer.privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik</a></li>
+                <li><a data-i18n="footer.support" asp-area="" asp-controller="Home" asp-action="Contact">Destek</a></li>
             </ul>
         </div>
     </footer>
@@ -108,3 +100,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

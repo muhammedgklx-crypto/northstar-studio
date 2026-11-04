@@ -403,6 +403,7 @@
             'İletişim Formu Dönüştürme Kuralları': 'Contact Form Conversion Rules',
             'Mobil İlk Dijital Deneyim': 'Mobile First Digital Experience',
             '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
+            '2026’da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
             'Arama motorlarında görünürlüğünüzü yükselten temel stratejileri öğrenin.': 'Learn the core strategies that increase your visibility in search engines.',
             'Formların dönüşüm oranını artırmak için uygulanabilecek etkili yöntemler.': 'Effective methods to increase form conversion rates.',
             'Mobil kullanıcı davranışına göre şekillenen modern site yapıları.': 'Modern site structures shaped by mobile user behavior.',
@@ -418,6 +419,7 @@
             'Örnek Ürün': 'Sample Product',
             '(Gerçek anahtarlar appsettings.json içinde Stripe:SecretKey ve PublishableKey ile sağlanmalıdır.)': '(Real keys must be provided in appsettings.json as Stripe:SecretKey and PublishableKey.)',
             '2026\'da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
+            '2026’da kullanıcı deneyimini artıran modern tasarım yaklaşımlarını keşfedin.': 'Discover modern design approaches that enhance user experience in 2026.',
             // BlogPost detay metinleri
             'SEO ile Organik Ziyaret Artırma': 'Increasing Organic Traffic with SEO',
             'Doğru anahtar kelimeler, içerik kalitesi ve hızlı web sitesi performansı organik trafiği artırır.': 'Correct keywords, content quality and fast website performance increase organic traffic.',
